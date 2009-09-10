@@ -5,7 +5,7 @@
 Summary: AnyEdit plugin for eclipse
 Name: eclipse-anyedit
 Version: 2.1.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: BSD
 Group: Development/Other
 URL: http://andrei.gmxhome.de/anyedit/index.html
