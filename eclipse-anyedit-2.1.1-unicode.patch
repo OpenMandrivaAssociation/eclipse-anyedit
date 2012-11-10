@@ -1,0 +1,260 @@
+# This patch was generated with:
+
+#!/bin/bash
+for char in à á À Á â Â ä Ä å Å ã Ã æ Æ ç Ç é É è È ê Ê ë Ë í Í ï Ï õ Õ ó ô Ó Ô ö Ö ø Ø ß ù Ù ú Ú û Û ü Ü
+  do
+    newchar=$(echo $char | od -x -N1 | tr 'a-f' 'A-F' | head -1 | awk '{print "\\u"$2}')
+    export char newchar
+    perl -pi -e 's/$ENV{char}/$ENV{newchar}/g' $1
+  done
+
+--- eclipse-anyedit-2.1.1/src/de/loskutov/anyedit/util/TextUtil.java	2008-10-11 20:38:10.000000000 -0400
++++ eclipse-anyedit-2.1.1/src/de/loskutov/anyedit/util/TextUtil.java	2008-10-11 20:38:21.000000000 -0400
+@@ -894,53 +894,53 @@ public class TextUtil {
+             "&gt;", ">" }, {
+             "&amp;", "&" }, {
+             "&quot;", "\"" }, {
+-            "&agrave;", "à" }, {
+-            "&Agrave;", "À" }, {
+-            "&acirc;", "â" }, {
+-            "&auml;", "ä" }, {
+-            "&Auml;", "Ä" }, {
+-            "&Acirc;", "Â" }, {
+-            "&aring;", "å" }, {
+-            "&Aring;", "Å" }, {
+-            "&aelig;", "æ" }, {
+-            "&AElig;", "Æ" }, {
+-            "&ccedil;", "ç" }, {
+-            "&Ccedil;", "Ç" }, {
+-            "&eacute;", "é" }, {
+-            "&Eacute;", "É" }, {
+-            "&aacute;", "á" }, {
+-            "&Aacute;", "Á" }, {
+-            "&egrave;", "è" }, {
+-            "&Egrave;", "È" }, {
+-            "&ecirc;", "ê" }, {
+-            "&Ecirc;", "Ê" }, {
+-            "&euml;", "ë" }, {
+-            "&Euml;", "Ë" }, {
+-            "&iuml;", "ï" }, {
+-            "&Iuml;", "Ï" }, {
+-            "&iacute;", "í" }, {
+-            "&Iacute;", "Í" }, {
+-            "&atilde;", "ã" }, {
+-            "&Atilde;", "Ã" }, {
+-            "&otilde;", "õ" }, {
+-            "&Otilde;", "Õ" }, {
+-            "&oacute;", "ó" }, {
+-            "&Oacute;", "Ó" }, {
+-            "&ocirc;", "ô" }, {
+-            "&Ocirc;", "Ô" }, {
+-            "&ouml;", "ö" }, {
+-            "&Ouml;", "Ö" }, {
+-            "&oslash;", "ø" }, {
+-            "&Oslash;", "Ø" }, {
+-            "&szlig;", "ß" }, {
+-            "&ugrave;", "ù" }, {
+-            "&Ugrave;", "Ù" }, {
+-            "&uacute;", "ú" }, {
+-            "&Uacute;", "Ú" }, {
+-            "&ucirc;", "û" }, {
+-            "&Ucirc;", "Û" }, {
+-            "&uuml;", "ü" }, {
+-            "&Uuml;", "Ü" }, {
++            "&agrave;", "\u00E0" }, {
++            "&Agrave;", "\u00C0" }, {
++            "&acirc;", "\u00E2" }, {
++            "&auml;", "\u00E4" }, {
++            "&Auml;", "\u00C4" }, {
++            "&Acirc;", "\u00C2" }, {
++            "&aring;", "\u00E5" }, {
++            "&Aring;", "\u00C5" }, {
++            "&aelig;", "\u00E6" }, {
++            "&AElig;", "\u00C6" }, {
++            "&ccedil;", "\u00E7" }, {
++            "&Ccedil;", "\u00C7" }, {
++            "&eacute;", "\u00E9" }, {
++            "&Eacute;", "\u00C9" }, {
++            "&aacute;", "\u00E1" }, {
++            "&Aacute;", "\u00C1" }, {
++            "&egrave;", "\u00E8" }, {
++            "&Egrave;", "\u00C8" }, {
++            "&ecirc;", "\u00EA" }, {
++            "&Ecirc;", "\u00CA" }, {
++            "&euml;", "\u00EB" }, {
++            "&Euml;", "\u00CB" }, {
++            "&iuml;", "\u00EF" }, {
++            "&Iuml;", "\u00CF" }, {
++            "&iacute;", "\u00ED" }, {
++            "&Iacute;", "\u00CD" }, {
++            "&atilde;", "\u00E3" }, {
++            "&Atilde;", "\u00C3" }, {
++            "&otilde;", "\u00F5" }, {
++            "&Otilde;", "\u00D5" }, {
++            "&oacute;", "\u00F3" }, {
++            "&Oacute;", "\u00D3" }, {
++            "&ocirc;", "\u00F4" }, {
++            "&Ocirc;", "\u00D4" }, {
++            "&ouml;", "\u00F6" }, {
++            "&Ouml;", "\u00D6" }, {
++            "&oslash;", "\u00F8" }, {
++            "&Oslash;", "\u00D8" }, {
++            "&szlig;", "\u00DF" }, {
++            "&ugrave;", "\u00F9" }, {
++            "&Ugrave;", "\u00D9" }, {
++            "&uacute;", "\u00FA" }, {
++            "&Uacute;", "\u00DA" }, {
++            "&ucirc;", "\u00FB" }, {
++            "&Ucirc;", "\u00DB" }, {
++            "&uuml;", "\u00FC" }, {
++            "&Uuml;", "\u00DC" }, {
+             "&nbsp;", " " }, {
+             "&reg;", "\u00AE" }, {
+             "&copy;", "\u00A9" }, {
+@@ -963,99 +963,99 @@ public class TextUtil {
+             return "&amp;";
+         case '"':
+             return "&quot;";
+-        case 'à':
++        case '\u00E0':
+             return "&agrave;";
+-        case 'á':
++        case '\u00E1':
+             return "&aacute;";
+-        case 'À':
++        case '\u00C0':
+             return "&Agrave;";
+-        case 'Á':
++        case '\u00C1':
+             return "&Aacute;";
+-        case 'â':
++        case '\u00E2':
+             return "&acirc;";
+-        case 'Â':
++        case '\u00C2':
+             return "&Acirc;";
+-        case 'ä':
++        case '\u00E4':
+             return "&auml;";
+-        case 'Ä':
++        case '\u00C4':
+             return "&Auml;";
+-        case 'å':
++        case '\u00E5':
+             return "&aring;";
+-        case 'Å':
++        case '\u00C5':
+             return "&Aring;";
+-        case 'ã':
++        case '\u00E3':
+             return "&atilde;";
+-        case 'Ã':
++        case '\u00C3':
+             return "&Atilde;";
+-        case 'æ':
++        case '\u00E6':
+             return "&aelig;";
+-        case 'Æ':
++        case '\u00C6':
+             return "&AElig;";
+-        case 'ç':
++        case '\u00E7':
+             return "&ccedil;";
+-        case 'Ç':
++        case '\u00C7':
+             return "&Ccedil;";
+-        case 'é':
++        case '\u00E9':
+             return "&eacute;";
+-        case 'É':
++        case '\u00C9':
+             return "&Eacute;";
+-        case 'è':
++        case '\u00E8':
+             return "&egrave;";
+-        case 'È':
++        case '\u00C8':
+             return "&Egrave;";
+-        case 'ê':
++        case '\u00EA':
+             return "&ecirc;";
+-        case 'Ê':
++        case '\u00CA':
+             return "&Ecirc;";
+-        case 'ë':
++        case '\u00EB':
+             return "&euml;";
+-        case 'Ë':
++        case '\u00CB':
+             return "&Euml;";
+-        case 'í':
++        case '\u00ED':
+             return "&iacute;";
+-        case 'Í':
++        case '\u00CD':
+             return "&Iacute;";
+-        case 'ï':
++        case '\u00EF':
+             return "&iuml;";
+-        case 'Ï':
++        case '\u00CF':
+             return "&Iuml;";
+-        case 'õ':
++        case '\u00F5':
+             return "&otilde;";
+-        case 'Õ':
++        case '\u00D5':
+             return "&Otilde;";
+-        case 'ó':
++        case '\u00F3':
+             return "&oacute;";
+-        case 'ô':
++        case '\u00F4':
+             return "&ocirc;";
+-        case 'Ó':
++        case '\u00D3':
+             return "&Oacute;";
+-        case 'Ô':
++        case '\u00D4':
+             return "&Ocirc;";
+-        case 'ö':
++        case '\u00F6':
+             return "&ouml;";
+-        case 'Ö':
++        case '\u00D6':
+             return "&Ouml;";
+-        case 'ø':
++        case '\u00F8':
+             return "&oslash;";
+-        case 'Ø':
++        case '\u00D8':
+             return "&Oslash;";
+-        case 'ß':
++        case '\u00DF':
+             return "&szlig;";
+-        case 'ù':
++        case '\u00F9':
+             return "&ugrave;";
+-        case 'Ù':
++        case '\u00D9':
+             return "&Ugrave;";
+-        case 'ú':
++        case '\u00FA':
+             return "&uacute;";
+-        case 'Ú':
++        case '\u00DA':
+             return "&Uacute;";
+-        case 'û':
++        case '\u00FB':
+             return "&ucirc;";
+-        case 'Û':
++        case '\u00DB':
+             return "&Ucirc;";
+-        case 'ü':
++        case '\u00FC':
+             return "&uuml;";
+-        case 'Ü':
++        case '\u00DC':
+             return "&Uuml;";
+         case '\u00AE':
+             return "&reg;";
