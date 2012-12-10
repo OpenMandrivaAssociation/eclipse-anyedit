@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build.update.jar" name="build">
+        <target name="build.update.jar">
+                <ant antfile="${sourceDirectory}/build.xml" dir="${sourceDirectory}" target="build.update.jar"/>
+        </target>
+</project>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="gather.bin.parts" name="build">
+        <target name="gather.bin.parts">
+                <ant antfile="${sourceDirectory}/build.xml" dir="${sourceDirectory}" target="gather.bin.parts"/>
+        </target>
+</project>

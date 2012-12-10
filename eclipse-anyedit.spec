@@ -5,11 +5,10 @@
 Summary: AnyEdit plugin for eclipse
 Name: eclipse-anyedit
 Version: 2.1.1
-Release: %mkrel 3
+Release: 3
 License: BSD
 Group: Development/Other
 URL: http://andrei.gmxhome.de/anyedit/index.html
-Buildroot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release})
 
 Source0: http://andrei.gmxhome.de/eclipse/plugins/de.loskutov.anyedit.AnyEditTools_%{version}.%{rlsdate}.jar
 Source1: assemble.xml
@@ -120,3 +119,15 @@ fi
 %if %{gcj_support}
 %attr(-,root,root) %{_libdir}/gcj/%{name}
 %endif
+
+
+%changelog
+* Thu Sep 10 2009 Thierry Vignaud <tvignaud@mandriva.com> 2.1.1-2mdv2010.0
++ Revision: 437251
+- rebuild
+
+* Wed Feb 11 2009 Jérôme Soyer <saispo@mandriva.org> 2.1.1-1mdv2009.1
++ Revision: 339423
+- import eclipse-anyedit
+
+
