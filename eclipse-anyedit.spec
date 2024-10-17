@@ -8,7 +8,7 @@ Version: 2.1.1
 Release: 3
 License: BSD
 Group: Development/Other
-URL: http://andrei.gmxhome.de/anyedit/index.html
+URL: https://andrei.gmxhome.de/anyedit/index.html
 
 Source0: http://andrei.gmxhome.de/eclipse/plugins/de.loskutov.anyedit.AnyEditTools_%{version}.%{rlsdate}.jar
 Source1: assemble.xml
